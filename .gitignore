@@ -218,3 +218,5 @@ demo_*.ipynb
 
 .understand-anything/
 .codegraph/
+datasets/
+output/

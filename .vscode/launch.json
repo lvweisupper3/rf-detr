@@ -11,6 +11,20 @@
             "request": "launch",
             "program": "${workspaceFolder}/src/example/run_det_seg.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "run_train.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/example/run_train.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "run_infer.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/example/run_infer.py",
+            "console": "integratedTerminal"
         }
     ]
 }
