@@ -21,11 +21,10 @@ Download Priority Order:
     3. PLATFORM_MODELS dict - legacy fallback for backward compatibility
 """
 
-from __future__ import annotations
-
 import os
 from dataclasses import dataclass
 from enum import Enum
+from typing import Optional
 
 from rfdetr.platform import _IS_RFDETR_PLUS_AVAILABLE
 from rfdetr.utilities.files import _download_file, _validate_file_md5
@@ -59,7 +58,7 @@ class ModelWeightAsset:
 
     filename: str
     url: str
-    md5_hash: str | None = None
+    md5_hash: Optional[str] = None
 
 
 class ModelWeightsBase(Enum):
@@ -105,12 +104,12 @@ class ModelWeightsBase(Enum):
         return self.value.url
 
     @property
-    def md5_hash(self) -> str | None:
+    def md5_hash(self) -> Optional[str]:
         """Get the MD5 hash from the underlying ModelWeightAsset."""
         return self.value.md5_hash
 
     @classmethod
-    def from_filename(cls, filename: str) -> ModelWeightAsset | None:
+    def from_filename(cls, filename: str) -> Optional[ModelWeightAsset]:
         """Get ModelWeightAsset by filename.
 
         Args:
@@ -130,7 +129,7 @@ class ModelWeightsBase(Enum):
         return None
 
     @classmethod
-    def get_url(cls, filename: str) -> str | None:
+    def get_url(cls, filename: str) -> Optional[str]:
         """Get download URL for a model by filename.
 
         Args:
@@ -143,7 +142,7 @@ class ModelWeightsBase(Enum):
         return asset.url if asset else None
 
     @classmethod
-    def get_md5(cls, filename: str) -> str | None:
+    def get_md5(cls, filename: str) -> Optional[str]:
         """Get expected MD5 hash for a model by filename.
 
         Args:
@@ -336,7 +335,7 @@ def download_pretrain_weights(
         >>> download_pretrain_weights('rf-detr-base.pth')  # doctest: +SKIP
         Downloading pretrained weights for rf-detr-base.pth
     """
-    asset: ModelWeightAsset | None = None
+    asset: Optional[ModelWeightAsset] = None
 
     # Use basename for registry lookup so absolute paths (e.g.
     # "/content/rf-detr-base.pth") match the registered short name.
