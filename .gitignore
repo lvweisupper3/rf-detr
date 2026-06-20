@@ -214,3 +214,7 @@ tasks/
 demo_*.jpg
 demo_*.py
 demo_*.ipynb
+
+
+.understand-anything/
+.codegraph/
